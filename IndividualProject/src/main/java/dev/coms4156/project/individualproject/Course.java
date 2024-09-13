@@ -32,7 +32,7 @@ public class Course implements Serializable {
    * @return true if the student is successfully enrolled, false otherwise.
    */
   public boolean enrollStudent() {
-    if (this.enrollmentCapacity > this.enrolledStudentCount){
+    if (this.enrollmentCapacity > this.enrolledStudentCount) {
       this.enrolledStudentCount++;
       return true;
     }
@@ -45,7 +45,7 @@ public class Course implements Serializable {
    * @return true if the student is successfully dropped, false otherwise.
    */
   public boolean dropStudent() {
-    if (this.enrolledStudentCount > 0){
+    if (this.enrolledStudentCount > 0) {
       this.enrolledStudentCount--;
       return true;
     }
@@ -68,6 +68,7 @@ public class Course implements Serializable {
   }
 
 
+  @Override
   public String toString() {
     return "\nInstructor: " + instructorName +  "; Location: "
         + courseLocation +  "; Time: " + courseTimeSlot;

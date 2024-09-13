@@ -3,14 +3,27 @@ Course.java
 - Added a enrolled student number check for dropStudent()
 - Returned correct variable for getCourseLocation() and getInstructorName()
 - Fixed isCourseFull() condition
+- Fixed MissingOverride for toString()
 
 Department.java
 - Returned correct number for getNumberOfMajors()
 - Returned right string for getDepartmentChair()
 - Returned right string for toString()
+- Use Map instead of HashMap to fix LooseCoupling
+- Fixed MissingOverride for toString()
 
 RouteController.java
 - Fixed returned http status code for /retrieveDept
 - Fixed returned http status code for /retrieveCourse when it is successful
 - Fixed returned http status code for /getMajorCountFromDept when it is errored out
 - Returned course time slot for /findCourseTime
+- Fixed UnnecessaryAnnotationValueElement
+- Fixed UseLocaleWithCaseConversions
+
+IndividualProjectApplication.java
+- Fixed LiteralsFirstInComparisons for run()
+- Use Map instead of HashMap to fix LooseCoupling
+
+MyFileDatabase.java
+- Use Map instead of HashMap to fix LooseCoupling
+- Fix ReturnEmptyCollectionRatherThanNull for deSerializeObjectFromFile()
