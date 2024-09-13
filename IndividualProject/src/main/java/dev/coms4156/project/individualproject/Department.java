@@ -1,7 +1,9 @@
 package dev.coms4156.project.individualproject;
 
-import java.io.*;
-import java.util.*;
+import java.io.Serial;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -111,8 +113,8 @@ public class Department implements Serializable {
 
   @Serial
   private static final long serialVersionUID = 234567L;
-  private HashMap<String, Course> courses;
-  private String departmentChair;
-  private String deptCode;
+  private final HashMap<String, Course> courses;
+  private final String departmentChair;
+  private final String deptCode;
   private int numberOfMajors;
 }
