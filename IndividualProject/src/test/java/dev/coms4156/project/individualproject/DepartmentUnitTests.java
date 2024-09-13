@@ -2,11 +2,12 @@ package dev.coms4156.project.individualproject;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
-import java.util.HashMap;
 
 /**
  * Unit test for Course.
@@ -18,10 +19,12 @@ import java.util.HashMap;
 @SpringBootTest
 @ContextConfiguration
 public class DepartmentUnitTests {
-
+  /**
+   * Set up test courses before each test.
+   */
   @BeforeEach
   public void setupDepartmentForTesting() {
-    HashMap<String, Course> testCourses = new HashMap<>();
+    Map<String, Course> testCourses = new HashMap<>();
     testCourses.put("101", new Course("101 instructor", "room 101", "8:30-10:00", 100));
     testCourses.put("201", new Course("201 instructor", "room 201", "8:30-10:00", 100));
     testDepartment = new Department("000", testCourses, "test chair", 20);
@@ -41,7 +44,7 @@ public class DepartmentUnitTests {
 
   @Test
   public void getCourseSelectionTest() {
-    HashMap<String, Course> expectedResult = new HashMap<>();
+    Map<String, Course> expectedResult = new HashMap<>();
     expectedResult.put("101", new Course("101 instructor", "room 101", "8:30-10:00", 100));
     expectedResult.put("201", new Course("201 instructor", "room 201", "8:30-10:00", 100));
     assertEquals(expectedResult.size(), testDepartment.getCourseSelection().size());
@@ -77,13 +80,13 @@ public class DepartmentUnitTests {
 
   @Test
   public void toStringTest() {
-    String expectedResult = "000 101: \n" +
-        "Instructor: 101 instructor; Location: room 101; Time: 8:30-10:00\n" +
-        "000 201: \n" +
-        "Instructor: 201 instructor; Location: room 201; Time: 8:30-10:00\n";
+    String expectedResult = "000 101: \n"
+        + "Instructor: 101 instructor; Location: room 101; Time: 8:30-10:00\n"
+        + "000 201: \n"
+        + "Instructor: 201 instructor; Location: room 201; Time: 8:30-10:00\n";
     assertEquals(expectedResult, testDepartment.toString());
   }
 
 
-    public static Department testDepartment;
+  public static Department testDepartment;
 }

@@ -1,6 +1,9 @@
 package dev.coms4156.project.individualproject;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,25 +13,32 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 
+/**
+ * Test for RouteController.
+ *
+ * <p>
+ *   Verifies all endpoints
+ * </p>
+ */
 @ExtendWith(SpringExtension.class)
 @WebMvcTest(RouteController.class)
 public class RouteControllerTests {
   @Autowired
   private MockMvc mockMvc;
 
-
   @Test
   public void testIndex() throws Exception {
     mockMvc.perform(get("/"))
         .andExpect(status().isOk())
-        .andExpect(content().string("Welcome, in order to make an API call direct your browser or Postman to an endpoint "
+        .andExpect(content().string(
+            "Welcome, in order to make an API call direct your browser or Postman to an endpoint "
             + "\n\n This can be done using the following format: \n\n http:127.0.0"
             + ".1:8080/endpoint?arg=value"));
   }
 
   @Test
   public void retrieveDepartmentTest() throws Exception {
-   mockMvc.perform(get("/retrieveDept")
+    mockMvc.perform(get("/retrieveDept")
             .param("deptCode", "COMS")
             .accept(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk());
@@ -50,13 +60,13 @@ public class RouteControllerTests {
             .param("courseCode", "1004")
             .accept(MediaType.APPLICATION_JSON))
         .andExpect(status().isOk())
-        .andExpect(content().string("\n" +
-            "Instructor: Adam Cannon; Location: 417 IAB; Time: 11:40-12:55"));
+        .andExpect(content().string("\n"
+            + "Instructor: Adam Cannon; Location: 417 IAB; Time: 11:40-12:55"));
   }
 
   @Test
   public void retrieveCourseNonexistDepartmentTest() throws Exception {
-  mockMvc.perform(get("/retrieveCourse")
+    mockMvc.perform(get("/retrieveCourse")
             .param("deptCode", "Nonexist")
             .param("courseCode", "001")
             .accept(MediaType.APPLICATION_JSON))
